@@ -40,7 +40,7 @@ gulp.task('deploylocal', function() {
 		'*.php',
 		'*.css'];
 
-	var dest = '/var/www/html/theme-dev/wp-content/plugins/austeve-project-showcase';
+	var dest = '/var/www/html/theme-dev/wp-content/plugins/austeve-churchpew-projects';
 
 	return gulp.src(files, {base:"."})
 	        .pipe(gulp.dest(dest));

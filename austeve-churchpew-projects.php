@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Project Showcase
- * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-project-showcase
+ * Plugin Name: Projects CPT
+ * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-churchpew-projects
  * Description: Showcase a portfolio of projects
  * Version: 0.0.1
  * Author: AustralianSteve
