@@ -36,6 +36,7 @@ gulp.task('styles', function() {
 gulp.task('deploylocal', function() {
 
 	var files = [
+		'page-templates/**/*.php',
 		'js/**/*.js',
 		'*.php',
 		'*.css'];
