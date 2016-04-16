@@ -3,7 +3,7 @@
  * Plugin Name: Projects CPT
  * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-churchpew-projects
  * Description: Showcase a portfolio of projects
- * Version: 0.0.5
+ * Version: 0.0.6
  * Author: AustralianSteve
  * Author URI: http://AustralianSteve.com
  * License: GPL2
@@ -38,7 +38,7 @@ function austeve_create_projects_post_type() {
 // Set other options for Custom Post Type
 	
 	$args = array(
-		'label'               => __( 'churchpew-projects', 'churchpew' ),
+		'label'               => __( 'Projects', 'churchpew' ),
 		'description'         => __( 'Custom & commercial projects', 'churchpew' ),
 		'labels'              => $labels,
 		// Features this CPT supports in Post Editor
@@ -50,6 +50,7 @@ function austeve_create_projects_post_type() {
 		* is like Posts.
 		*/	
 		'hierarchical'        => false,
+		'rewrite'           => array( 'slug' => 'projects' ),
 		'public'              => true,
 		'show_ui'             => true,
 		'show_in_menu'        => true,
@@ -131,4 +132,23 @@ function project_include_template_function( $template_path ) {
     return $template_path;
 }
 add_filter( 'template_include', 'project_include_template_function', 1 );
+
+function project_filter_archive_title( $title ) {
+
+    if( is_tax('churchpew_project_types' ) ) {
+
+        $title = single_cat_title( '', false ) . ' projects';
+
+    }
+    else if ( is_post_type_archive('churchpew-projects') ) {
+
+        $title = post_type_archive_title( '', false );
+
+    }
+
+    return $title;
+
+}
+
+add_filter( 'get_the_archive_title', 'project_filter_archive_title');
 ?>
