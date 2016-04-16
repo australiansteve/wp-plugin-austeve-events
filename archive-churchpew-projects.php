@@ -25,9 +25,13 @@ get_header(); ?>
 					?>
 				</header><!-- .page-header -->
 
+				<div class="row small-up-1 medium-up-2 large-up-4" id="projects-block-grid">
+
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
-					<span>Project!</span>
+
+					<div class="column">
+
 					<?php
 						/* Include the Post-Format-specific template for the content.
 						 * If you want to override this in a child theme, then include a file
@@ -36,8 +40,12 @@ get_header(); ?>
 						get_template_part( 'page-templates/partials/content', get_post_format() );
 						
 					?>
+					
+					</div>
 
 				<?php endwhile; ?>
+
+				</div> <!-- #projects-block-grid -->
 
 				<?php the_posts_navigation(); ?>
 

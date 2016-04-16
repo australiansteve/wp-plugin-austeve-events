@@ -3,7 +3,7 @@
  * Plugin Name: Projects CPT
  * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-churchpew-projects
  * Description: Showcase a portfolio of projects
- * Version: 0.0.7
+ * Version: 0.0.8
  * Author: AustralianSteve
  * Author URI: http://AustralianSteve.com
  * License: GPL2
