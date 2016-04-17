@@ -3,7 +3,7 @@
  * Plugin Name: Projects CPT
  * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-churchpew-projects
  * Description: Showcase a portfolio of projects
- * Version: 0.0.8
+ * Version: 0.1.0
  * Author: AustralianSteve
  * Author URI: http://AustralianSteve.com
  * License: GPL2
@@ -152,4 +152,14 @@ function project_filter_archive_title( $title ) {
 
 add_filter( 'get_the_archive_title', 'project_filter_archive_title');
 
+function churchpew_projects_enqueue_style() {
+	wp_enqueue_style( 'churchpew-projects', plugin_dir_url( __FILE__ ). '/style.css' , false , '4.6'); 
+}
+
+function churchpew_projects_enqueue_script() {
+	//wp_enqueue_script( 'my-js', 'filename.js', false );
+}
+
+add_action( 'wp_enqueue_scripts', 'churchpew_projects_enqueue_style' );
+add_action( 'wp_enqueue_scripts', 'churchpew_projects_enqueue_script' );
 ?>
