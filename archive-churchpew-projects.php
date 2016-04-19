@@ -34,7 +34,7 @@ get_header(); ?>
 
             			<div class='container'>
 
-				            <a href='<?php get_permalink(); ?>' class=''>
+				            <a href='<?php echo get_permalink(); ?>' class=''>
 
 								<?php 
 									$gallery = get_field('project_gallery', $post->ID); 
