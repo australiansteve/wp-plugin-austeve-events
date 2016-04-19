@@ -25,7 +25,7 @@ get_header(); ?>
 					?>
 				</header><!-- .page-header -->
 
-				<div class="row small-up-1 medium-up-2 large-up-4 align-middle" id="projects-block-grid">
+				<div class="row small-up-1 medium-up-2 large-up-4" id="projects-block-grid">
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
