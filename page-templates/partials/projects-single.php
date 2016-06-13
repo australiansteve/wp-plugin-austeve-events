@@ -4,7 +4,7 @@
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  * 
- * @package ChurchPew Projects
+ * @package AUSteve Projects
  */
 ?>
 
@@ -68,13 +68,13 @@
 
 		<?php
 			wp_link_pages( array(
-				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'churchpew' ),
+				'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'austeve-projects' ),
 				'after'  => '</div>',
 			) );
 		?>
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php churchpew_entry_footer(); ?>
+		<?php austeve-projects_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->

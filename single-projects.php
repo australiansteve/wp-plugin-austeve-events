@@ -4,7 +4,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package ChurchPew Projects
+ * @package AUSteve Projects
  */
 
 get_header(); ?>
@@ -20,12 +20,12 @@ get_header(); ?>
 				
 				<?php 
 
-            		if (locate_template('page-templates/partials/churchpew-projects-single.php') != '') {
+            		if (locate_template('page-templates/partials/projects-single.php') != '') {
 						// yep, load the page template
-						get_template_part('page-templates/partials/churchpew-projects', 'single');
+						get_template_part('page-templates/partials/projects', 'single');
 					} else {
 						// nope, load the default
-						include( plugin_dir_path( __FILE__ ) . 'page-templates/partials/churchpew-projects-single.php');
+						include( plugin_dir_path( __FILE__ ) . 'page-templates/partials/projects-single.php');
 					}
 
 				?>

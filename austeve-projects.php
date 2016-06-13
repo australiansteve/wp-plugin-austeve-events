@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Projects CPT
- * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-churchpew-projects
+ * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-projects
  * Description: Showcase a portfolio of projects
  * Version: 0.1.2
  * Author: AustralianSteve
@@ -20,26 +20,26 @@ function austeve_create_projects_post_type() {
 
 // Set UI labels for Custom Post Type
 	$labels = array(
-		'name'                => _x( 'Projects', 'Post Type General Name', 'churchpew' ),
-		'singular_name'       => _x( 'Project', 'Post Type Singular Name', 'churchpew' ),
-		'menu_name'           => __( 'Projects', 'churchpew' ),
-		'parent_item_colon'   => __( 'Parent Project', 'churchpew' ),
-		'all_items'           => __( 'All Projects', 'churchpew' ),
-		'view_item'           => __( 'View Project', 'churchpew' ),
-		'add_new_item'        => __( 'Add New Project', 'churchpew' ),
-		'add_new'             => __( 'Add New', 'churchpew' ),
-		'edit_item'           => __( 'Edit Project', 'churchpew' ),
-		'update_item'         => __( 'Update Project', 'churchpew' ),
-		'search_items'        => __( 'Search Project', 'churchpew' ),
-		'not_found'           => __( 'Not Found', 'churchpew' ),
-		'not_found_in_trash'  => __( 'Not found in Trash', 'churchpew' ),
+		'name'                => _x( 'Projects', 'Post Type General Name', 'austeve-projects' ),
+		'singular_name'       => _x( 'Project', 'Post Type Singular Name', 'austeve-projects' ),
+		'menu_name'           => __( 'Projects', 'austeve-projects' ),
+		'parent_item_colon'   => __( 'Parent Project', 'austeve-projects' ),
+		'all_items'           => __( 'All Projects', 'austeve-projects' ),
+		'view_item'           => __( 'View Project', 'austeve-projects' ),
+		'add_new_item'        => __( 'Add New Project', 'austeve-projects' ),
+		'add_new'             => __( 'Add New', 'austeve-projects' ),
+		'edit_item'           => __( 'Edit Project', 'austeve-projects' ),
+		'update_item'         => __( 'Update Project', 'austeve-projects' ),
+		'search_items'        => __( 'Search Project', 'austeve-projects' ),
+		'not_found'           => __( 'Not Found', 'austeve-projects' ),
+		'not_found_in_trash'  => __( 'Not found in Trash', 'austeve-projects' ),
 	);
 	
 // Set other options for Custom Post Type
 	
 	$args = array(
-		'label'               => __( 'Projects', 'churchpew' ),
-		'description'         => __( 'Custom & commercial projects', 'churchpew' ),
+		'label'               => __( 'Projects', 'austeve-projects' ),
+		'description'         => __( 'Projects of any type', 'austeve-projects' ),
 		'labels'              => $labels,
 		// Features this CPT supports in Post Editor
 		'supports'            => array( 'title', 'author', 'revisions', ),
@@ -65,7 +65,7 @@ function austeve_create_projects_post_type() {
 	);
 	
 	// Registering your Custom Post Type
-	register_post_type( 'churchpew-projects', $args );
+	register_post_type( 'austeve-projects', $args );
 
 
 	$taxonomyLabels = array(
@@ -84,7 +84,7 @@ function austeve_create_projects_post_type() {
 
 	$taxonomyArgs = array(
 
-		'label'               => __( 'churchpew_project_types', 'churchpew' ),
+		'label'               => __( 'austeve_project_types', 'austeve-projects' ),
 		'labels'              => $taxonomyLabels,
 		'show_admin_column'	=> false,
 		'hierarchical' 		=> true,
@@ -97,7 +97,7 @@ function austeve_create_projects_post_type() {
 							 )
 		);
 
-	register_taxonomy( 'churchpew_project_types', 'churchpew-projects', $taxonomyArgs );
+	register_taxonomy( 'austeve_project_types', 'austeve-projects', $taxonomyArgs );
 
 }
 
@@ -109,23 +109,23 @@ function austeve_create_projects_post_type() {
 add_action( 'init', 'austeve_create_projects_post_type', 0 );
 
 function project_include_template_function( $template_path ) {
-    if ( get_post_type() == 'churchpew-projects' ) {
+    if ( get_post_type() == 'austeve-projects' ) {
         if ( is_single() ) {
             // checks if the file exists in the theme first,
             // otherwise serve the file from the plugin
-            if ( $theme_file = locate_template( array ( 'single-churchpew-projects.php' ) ) ) {
+            if ( $theme_file = locate_template( array ( 'single-projects.php' ) ) ) {
                 $template_path = $theme_file;
             } else {
-                $template_path = plugin_dir_path( __FILE__ ) . '/single-churchpew-projects.php';
+                $template_path = plugin_dir_path( __FILE__ ) . '/single-projects.php';
             }
         }
         else if ( is_archive() ) {
             // checks if the file exists in the theme first,
             // otherwise serve the file from the plugin
-            if ( $theme_file = locate_template( array ( 'archive-churchpew-projects.php' ) ) ) {
+            if ( $theme_file = locate_template( array ( 'archive-projects.php' ) ) ) {
                 $template_path = $theme_file;
             } else {
-                $template_path = plugin_dir_path( __FILE__ ) . '/archive-churchpew-projects.php';
+                $template_path = plugin_dir_path( __FILE__ ) . '/archive-projects.php';
             }
         }
     }
@@ -135,12 +135,12 @@ add_filter( 'template_include', 'project_include_template_function', 1 );
 
 function project_filter_archive_title( $title ) {
 
-    if( is_tax('churchpew_project_types' ) ) {
+    if( is_tax('austeve_project_types' ) ) {
 
         $title = single_cat_title( '', false ) . ' projects';
 
     }
-    else if ( is_post_type_archive('churchpew-projects') ) {
+    else if ( is_post_type_archive('austeve-projects') ) {
 
         $title = post_type_archive_title( '', false );
 
@@ -152,14 +152,14 @@ function project_filter_archive_title( $title ) {
 
 add_filter( 'get_the_archive_title', 'project_filter_archive_title');
 
-function churchpew_projects_enqueue_style() {
-	wp_enqueue_style( 'churchpew-projects', plugin_dir_url( __FILE__ ). '/style.css' , false , '4.6'); 
+function austeve_projects_enqueue_style() {
+	wp_enqueue_style( 'austeve-projects', plugin_dir_url( __FILE__ ). '/style.css' , false , '4.6'); 
 }
 
-function churchpew_projects_enqueue_script() {
+function austeve_projects_enqueue_script() {
 	//wp_enqueue_script( 'my-js', 'filename.js', false );
 }
 
-add_action( 'wp_enqueue_scripts', 'churchpew_projects_enqueue_style' );
-add_action( 'wp_enqueue_scripts', 'churchpew_projects_enqueue_script' );
+add_action( 'wp_enqueue_scripts', 'austeve_projects_enqueue_style' );
+add_action( 'wp_enqueue_scripts', 'austeve_projects_enqueue_script' );
 ?>
