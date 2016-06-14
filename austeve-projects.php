@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Projects CPT
+ * Plugin Name: Projects - Custom Post Type
  * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-projects
  * Description: Showcase a portfolio of projects
  * Version: 0.1.2
@@ -162,4 +162,23 @@ function austeve_projects_enqueue_script() {
 
 add_action( 'wp_enqueue_scripts', 'austeve_projects_enqueue_style' );
 add_action( 'wp_enqueue_scripts', 'austeve_projects_enqueue_script' );
+
+if ( ! function_exists( 'austeve_projects_entry_footer' ) ) :
+/**
+ * Prints HTML with meta information for the categories, tags and comments.
+ */
+function austeve_projects_entry_footer() {
+	
+	edit_post_link(
+		sprintf(
+			/* translators: %s: Name of current post */
+			esc_html__( 'Edit %s', 'austeve-projects' ),
+			the_title( '<span class="screen-reader-text">"', '"</span>', false )
+		),
+		'<span class="edit-link">',
+		'</span>'
+	);
+}
+endif;
+
 ?>

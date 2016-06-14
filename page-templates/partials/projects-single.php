@@ -75,6 +75,6 @@
 	</div><!-- .entry-content -->
 
 	<footer class="entry-footer">
-		<?php austeve-projects_entry_footer(); ?>
+		<?php austeve_projects_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-## -->
