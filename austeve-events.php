@@ -62,6 +62,7 @@ function austeve_create_events_post_type() {
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
 		'capability_type'     => 'page',
+		'menu_icon'				=> 'dashicons-calendar-alt',
 	);
 	
 	// Registering your Custom Post Type
