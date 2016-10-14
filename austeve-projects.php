@@ -1,7 +1,7 @@
 <?php
 /**
- * Plugin Name: Projects - Custom Post Type
- * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-projects
+ * Plugin Name: Events - Custom Post Type
+ * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-events
  * Description: Showcase a portfolio of projects
  * Version: 0.1.2
  * Author: AustralianSteve
