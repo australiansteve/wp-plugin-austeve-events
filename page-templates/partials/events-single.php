@@ -10,6 +10,11 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
+	<div class="corner-background corner-background-1">&nbsp;</div>
+	<div class="corner-background corner-background-2">&nbsp;</div>
+	<div class="corner-background corner-background-3">&nbsp;</div>
+	<div class="corner-background corner-background-4">&nbsp;</div>
+
 	<div class="entry-content">
 
 		<?php 
@@ -46,20 +51,14 @@
 								<?php the_title( '<h1 class="entry-title">', '</h1>' ); ?>
 							</header><!-- .entry-header -->
 						</div>
-						<div class="row">
-				        	<div class="small-12 columns">
-				        		<?php echo get_field('date'); ?>
-				        	</div>
+						<div class="row columns">
+				        	<?php echo get_field('date'); ?>
 						</div>
-						<div class="row">
-				        	<div class="small-12 columns">
-				        		<?php echo get_field('venue'); ?>
-				        	</div>
+						<div class="row columns">
+				        	<?php echo get_field('venue'); ?>
 						</div>
-						<div class="row">
-				        	<div class="small-12 columns">
-				        		<?php echo get_field('description'); ?>
-				        	</div>
+						<div class="row columns">
+				        	<?php echo get_field('description'); ?>
 						</div>
 			        <?php
 			        endif;

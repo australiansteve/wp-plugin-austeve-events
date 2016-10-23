@@ -12,11 +12,41 @@ a {
 }
 
 #events-block-grid article.austeve-events {
-	background: #FFFFFF;
+	position: relative;
 }
 
 #events-block-grid .columns {
     padding-left: 0;
     padding-right: 0;
 
+}
+
+#events-block-grid .corner-background {
+	position: absolute;
+	width: 10%;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+#events-block-grid .corner-background-1 {
+	top: 0;
+	left: 0;
+}
+
+#events-block-grid .corner-background-2 {
+	top: 0;
+	right: 0;
+	transform: rotate(45deg);
+}
+
+#events-block-grid .corner-background-3 {
+	bottom: 0;
+	right: 0;
+	transform: rotate(135deg);
+}
+
+#events-block-grid .corner-background-4 {
+	bottom: 0;
+	left: 0;
+	
 }
