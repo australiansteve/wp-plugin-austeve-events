@@ -1,10 +1,10 @@
 <?php
 /**
- * The template for displaying all single projects.
+ * The template for displaying all single events.
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package AUSteve Projects
+ * @package AUSteve Events
  */
 
 get_header(); ?>
@@ -20,12 +20,12 @@ get_header(); ?>
 				
 				<?php 
 
-            		if (locate_template('page-templates/partials/projects-single.php') != '') {
+            		if (locate_template('page-templates/partials/events-single.php') != '') {
 						// yep, load the page template
-						get_template_part('page-templates/partials/projects', 'single');
+						get_template_part('page-templates/partials/events', 'single');
 					} else {
 						// nope, load the default
-						include( plugin_dir_path( __FILE__ ) . 'page-templates/partials/projects-single.php');
+						include( plugin_dir_path( __FILE__ ) . 'page-templates/partials/events-single.php');
 					}
 
 				?>
@@ -34,7 +34,7 @@ get_header(); ?>
 				the_post_navigation(array(
 			        'prev_text'          => '<i class="fa fa-arrow-left"></i> Previous',
 			        'next_text'          => 'Next <i class="fa fa-arrow-right"></i>',
-			        'screen_reader_text' => __( 'More projects:' ),
+			        'screen_reader_text' => __( 'More events:' ),
 			    )); ?>
 
 			<?php endwhile; // end of the loop. ?>

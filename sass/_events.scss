@@ -11,10 +11,12 @@ a {
 	margin: auto; //Gets vertical alignment to be 'middle'
 }
 
-#events-block-grid .column {
-	margin-bottom: 3rem;
+#events-block-grid article.austeve-events {
+	background: #FFFFFF;
 }
 
-#events-block-grid .gallery img {
-	max-height: 200px;
+#events-block-grid .columns {
+    padding-left: 0;
+    padding-right: 0;
+
 }

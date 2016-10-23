@@ -10,6 +10,7 @@
  */
 
 include( plugin_dir_path( __FILE__ ) . 'admin.php');
+include( plugin_dir_path( __FILE__ ) . 'shortcode.php');
 include( plugin_dir_path( __FILE__ ) . 'widget.php');
 
 /*
@@ -164,22 +165,43 @@ function austeve_events_enqueue_script() {
 add_action( 'wp_enqueue_scripts', 'austeve_events_enqueue_style' );
 add_action( 'wp_enqueue_scripts', 'austeve_events_enqueue_script' );
 
-if ( ! function_exists( 'austeve_events_entry_footer' ) ) :
-/**
- * Prints HTML with meta information for the categories, tags and comments.
- */
-function austeve_events_entry_footer() {
+function pre_get_posts_order_events( $query ) {
 	
-	edit_post_link(
-		sprintf(
-			/* translators: %s: Name of current post */
-			esc_html__( 'Edit %s', 'austeve-events' ),
-			the_title( '<span class="screen-reader-text">"', '"</span>', false )
-		),
-		'<span class="edit-link">',
-		'</span>'
-	);
+	// do not modify queries in the admin
+	if( is_admin() ) {
+		
+		return $query;
+		
+	}
+
+	// only modify queries for 'event' post type
+	if( isset($query->query_vars['post_type']) && $query->query_vars['post_type'] == 'austeve-events' ) {
+		
+		// find date time now
+		$date_now = date('Y-m-d H:i:s');
+
+		//Find the next 2 events
+		$query->set('posts_per_page', 2);	
+		$query->set('orderby', 'meta_value');	
+		$query->set('meta_key', 'date');	 	
+		$query->set('meta_type', 'DATETIME');	 
+		$query->set('order', 'ASC');	 
+		$query->set('meta_query', array(
+	        'key'			=> 'date',
+	        'compare'		=> '>=',
+	        'value'			=> $date_now,
+	        'type'			=> 'DATETIME',
+	    ));
+	}
+
+	// return
+	return $query;
+
 }
-endif;
+
+add_action('pre_get_posts', 'pre_get_posts_order_events');
+
+
+//Shortcode
 
 ?>

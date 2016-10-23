@@ -1,6 +1,6 @@
 <?php
 /**
- * Template part for displaying single events.
+ * Template part for displaying archived events.
  *
  * @link https://codex.wordpress.org/Template_Hierarchy
  * 
@@ -54,11 +54,6 @@
 						<div class="row">
 				        	<div class="small-12 columns">
 				        		<?php echo get_field('venue'); ?>
-				        	</div>
-						</div>
-						<div class="row">
-				        	<div class="small-12 columns">
-				        		<?php echo get_field('description'); ?>
 				        	</div>
 						</div>
 			        <?php

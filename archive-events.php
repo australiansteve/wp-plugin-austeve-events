@@ -25,41 +25,26 @@ get_header(); ?>
 					?>
 				</header><!-- .page-header -->
 
-				<div class="row small-up-1 medium-up-2 large-up-4" id="projects-block-grid">
+				<div class="row small-up-1 medium-up-2 large-up-3 align-middle" id="events-block-grid">
 
 				<?php /* Start the Loop */ ?>
 				<?php while ( have_posts() ) : the_post(); ?>
-
 					<div class="column">
+				<?php 
 
-            			<div class='container'>
+            		if (locate_template('page-templates/partials/events-archive.php') != '') {
+						// yep, load the page template
+						get_template_part('page-templates/partials/events', 'archive');
+					} else {
+						// nope, load the default
+						include( plugin_dir_path( __FILE__ ) . 'page-templates/partials/events-archive.php');
+					}
 
-				            <a href='<?php echo get_permalink(); ?>' class=''>
-
-								<?php 
-									$gallery = get_field('project_gallery', $post->ID); 
-									//var_dump($gallery);
-									if ($gallery) {
-										//Use the first image in the gallery
-										echo "<div class='gallery'><img src='".$gallery[0]['url']."'/></div>";
-									}
-									else {
-										//Shouldn't happen
-										echo "<div class='gallery-placeholder'>Placeholder</div>";
-									}
-								?>
-								<br/>
-								<?php the_title( '<h2 class="entry-title">', '</h2>' ); ?>
-
-				            </a>
-
-            			</div>
-					
+				?>
 					</div>
-
 				<?php endwhile; ?>
 
-				</div> <!-- #projects-block-grid -->
+				</div> <!-- #events-block-grid -->
 
 				<?php the_posts_navigation(); ?>
 
