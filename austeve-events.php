@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name: Events - Custom Post Type
+ * Plugin Name: Events - Five & Dime
  * Plugin URI: https://github.com/australiansteve/wp-plugin-austeve-events
  * Description: Showcase a series of events
- * Version: 0.0.1
+ * Version: 1.0.0
  * Author: AustralianSteve
  * Author URI: http://AustralianSteve.com
  * License: GPL2

@@ -2,10 +2,6 @@ header.page-header {
 	margin-bottom: 3rem;
 }
 
-a {
-	font-size: 1.5rem;
-}
-
 #events-block-grid div {
 	text-align: center;
 	margin: auto; //Gets vertical alignment to be 'middle'
@@ -13,6 +9,10 @@ a {
 
 #events-block-grid article.austeve-events {
 	position: relative;
+}
+
+#events-block-grid article.padded {
+	padding: 1rem;
 }
 
 #events-block-grid .columns {

@@ -7,8 +7,22 @@
  * @package AUSteve Events
  */
 ?>
+<?php 
+	$image = get_field('image'); 
+	$paddingClass='';
+	if( have_rows('image') ){
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+	     // loop through the rows of data - there should only be 1 though
+	    while ( have_rows('image') ) : the_row();
+
+	        if( get_row_layout() == 'event_image' ){
+	        	$paddingClass='padded';
+	        }
+
+	    endwhile;
+    }
+?>
+<article id="post-<?php the_ID(); ?>" <?php post_class( $paddingClass ); ?>>
 	
 	<div class="corner-background corner-background-1">&nbsp;</div>
 	<div class="corner-background corner-background-2">&nbsp;</div>
