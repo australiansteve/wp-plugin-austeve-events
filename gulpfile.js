@@ -41,7 +41,7 @@ gulp.task('deploylocal', function() {
 		'*.php',
 		'*.css'];
 
-	var dest = '/var/www/html/theme-dev/wp-content/plugins/austeve-events';
+	var dest = 'C:/wamp/www/theme-dev/wp-content/plugins/austeve-events';
 
 	return gulp.src(files, {base:"."})
 	        .pipe(gulp.dest(dest));
