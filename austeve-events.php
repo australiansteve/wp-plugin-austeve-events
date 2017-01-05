@@ -90,7 +90,7 @@ function austeve_create_events_post_type() {
 		'label'               => __( 'austeve_event_types', 'austeve-events' ),
 		'labels'              => $taxonomyLabels,
 		'show_admin_column'	=> false,
-		'hierarchical' 		=> true,
+		'hierarchical' 		=> false,
 		'show_ui'			=> false,
 		'rewrite'           => array( 'slug' => 'event-type' ),
 		'capabilities'		=> array(
