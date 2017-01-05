@@ -40,7 +40,7 @@ function austeve_create_events_post_type() {
 	
 	$args = array(
 		'label'               => __( 'Events', 'austeve-events' ),
-		'description'         => __( 'Events of any type', 'austeve-events' ),
+		'description'         => __( 'Canvas & Cocktail Events', 'austeve-events' ),
 		'labels'              => $labels,
 		// Features this CPT supports in Post Editor
 		'supports'            => array( 'title', 'author', 'revisions', ),
@@ -62,7 +62,8 @@ function austeve_create_events_post_type() {
 		'has_archive'         => true,
 		'exclude_from_search' => false,
 		'publicly_queryable'  => true,
-		'capability_type'     => 'page',
+		'capability_type'     => array( 'event' , 'events' ),
+        'map_meta_cap'        => true,
 		'menu_icon'				=> 'dashicons-calendar-alt',
 	);
 	
@@ -90,6 +91,7 @@ function austeve_create_events_post_type() {
 		'labels'              => $taxonomyLabels,
 		'show_admin_column'	=> false,
 		'hierarchical' 		=> true,
+		'show_ui'			=> false,
 		'rewrite'           => array( 'slug' => 'event-type' ),
 		'capabilities'		=> array(
 							    'manage_terms' => 'edit_users',
