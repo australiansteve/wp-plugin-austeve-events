@@ -81,4 +81,48 @@ function austeve_update_post_event_type( $post_id ) {
 
 add_action('acf/save_post', 'austeve_update_post_event_type', 20);
 
+//Filter the admin call for Events based on the current users role(s) - Only display events that the user has access to
+function austeve_filter_events_for_admins( $query ) {
+    
+	if (!is_admin() ||  //Not in admin screens 
+		(isset($query->query_vars['post_type']) && $query->query_vars['post_type'] != 'austeve-events' ) || //Not on an events admin page
+		current_user_can('edit_users') ) //Has access to all regions/locations
+	{
+		return $query;
+	}
+
+	//If we get here the current user has access to view locations, therefore they should be able to set Regions
+
+	//Get current user roles
+	$roles = wp_get_current_user()->roles;
+	$my_terms = austeve_get_my_terms($roles);
+	error_log(print_r( $my_terms, true ));
+
+	//Get all locations in the users allowed region(s)
+	$args = array(
+		'posts_per_page'   => -1,
+		'orderby'          => 'ID',
+		'order'            => 'ASC',
+		'post_type'        => 'austeve-locations',
+		'post_status'      => 'publish',
+		'suppress_filters' => false 
+	);
+	$locations_array = get_posts( $args );
+	error_log(print_r( $locations_array, true ));
+
+	$meta_query = array(
+		array(
+			'key'     => 'location',
+			'value'   => implode(",", array_column($locations_array, 'ID')),
+			'compare' => 'IN',
+			'type'    => 'NUMERIC',
+		),
+	);
+
+	$query->set( 'meta_query', $meta_query );
+	error_log(print_r( $query, true ));
+}
+
+add_action( 'pre_get_posts', 'austeve_filter_events_for_admins' , 10, 1 );
+
 ?>
