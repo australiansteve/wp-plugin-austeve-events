@@ -110,10 +110,22 @@ function austeve_filter_events_for_admins( $query ) {
 	$locations_array = get_posts( $args );
 	error_log(print_r( $locations_array, true ));
 
+	$value_string = '';
+	if (count($locations_array) > 0)
+	{
+		$location_ids = array();
+		foreach($locations_array as $location)
+		{
+			$location_ids[] = $location->ID;
+		}
+
+		$value_string = (count($location_ids) > 1) ? implode(",", $location_ids) : $location_ids[0];
+	}
+
 	$meta_query = array(
 		array(
 			'key'     => 'location',
-			'value'   => implode(",", array_column($locations_array, 'ID')),
+			'value'   => $value_string,
 			'compare' => 'IN',
 			'type'    => 'NUMERIC',
 		),
